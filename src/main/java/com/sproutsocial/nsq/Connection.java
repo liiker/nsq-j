@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.net.ssl.SSLSocketFactory;
 import java.io.*;
-import java.lang.management.ManagementFactory;
+// import java.lang.management.ManagementFactory;
 import java.lang.reflect.Constructor;
 import java.net.InetSocketAddress;
 import java.net.Socket;
@@ -107,11 +107,12 @@ abstract class Connection extends BasePubSub implements Closeable {
 
     private void addClientConfig(Config config) {
         if (config.getHostname() == null) {
-            String pidHost = ManagementFactory.getRuntimeMXBean().getName();
-            int pos = pidHost.indexOf('@');
-            if (pos > 0) {
-                config.setHostname(pidHost.substring(pos + 1));
-            }
+//             String pidHost = ManagementFactory.getRuntimeMXBean().getName();
+//             int pos = pidHost.indexOf('@');
+//             if (pos > 0) {
+//                 config.setHostname(pidHost.substring(pos + 1));
+//             }
+            config.setHostname("localhost");
         }
         config.setUserAgent(USER_AGENT);
         config.setFeatureNegotiation(true);
